@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Matrix {
-    private int rows;
-    private int columns;
-    private int[][] matrix;
+    private final int rows;
+    private final int columns;
+    private final int[][] matrix;
 
     public void setElement(int _row, int _column, int _value) {
 
@@ -57,7 +57,7 @@ public class Matrix {
     @Override
     public int hashCode() {
         int result = Objects.hash(getRows(), getColumns());
-        result = 31 * result + Arrays.hashCode(matrix);
+        result = 31 * result + Arrays.deepHashCode(matrix);
         return result;
     }
 
@@ -67,7 +67,7 @@ public class Matrix {
         stringBuilder.append("[");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (j < columns && j != 0) stringBuilder.append(" ");
+                if (j != 0) stringBuilder.append(" ");
                 stringBuilder.append(this.matrix[i][j]);
             }
             if (i != rows - 1) stringBuilder.append("; ");
@@ -96,6 +96,6 @@ public class Matrix {
             stringBuilder.replace(stringBuilder.length()-1,stringBuilder.length(),"; ");
         }
         stringBuilder.replace(stringBuilder.length()-2,stringBuilder.length(),"]");*/
-        System.out.println(this.toString());
+        System.out.println(this);
     }
 }

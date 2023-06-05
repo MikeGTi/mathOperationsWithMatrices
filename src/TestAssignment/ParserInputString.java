@@ -1,7 +1,7 @@
 package TestAssignment;
 
 public class ParserInputString {
-    private String inputString = "";
+    private String inputString;
 
     public ParserInputString(String inputString) {
         this.inputString = inputString;

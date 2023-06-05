@@ -10,7 +10,7 @@ import static Parser.ParserOnLexemes.lexAnalyze;
 
 public class CalculatorMatrix {
 
-    private Matrices matrices;
+    private final Matrices matrices;
 
     private Matrix resultMatrix;
 
@@ -47,8 +47,9 @@ public class CalculatorMatrix {
             char c = expressionMatrixText.charAt(pos);
             if (c >= 'A' && c <= 'Z') {
                 Optional<Matrix> matrixOptional = matrices.getMatrix(c);
-                stringBuilder.append(matrixOptional.get().getElement(row,column));
-                if (matrixOptional.isEmpty()) {
+                if (matrixOptional.isPresent()) {
+                    stringBuilder.append(matrixOptional.get().getElement(row,column));
+                } else {
                     System.err.println("Matrix name '" + c + "' absent");
                 }
             } else {

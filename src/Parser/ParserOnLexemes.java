@@ -40,7 +40,7 @@ public class ParserOnLexemes {
         LEFT_BRACKET, RIGHT_BRACKET,
         OP_PLUS, OP_MINUS, OP_MUL, OP_DIV,
         NUMBER, NAME, COMMA,
-        EOF;
+        EOF
     }
 
     public interface Function {
@@ -75,8 +75,8 @@ public class ParserOnLexemes {
         });
         functionTable.put("avg", args -> {
             int sum = 0;
-            for (int i = 0; i < args.size(); i++) {
-                sum += args.get(i);
+            for (Integer arg : args) {
+                sum += arg;
             }
             return sum / args.size();
         });
@@ -265,12 +265,13 @@ public class ParserOnLexemes {
 
     public static int factor(LexemeBuffer lexemes) {
         Lexeme lexeme = lexemes.next();
+        int value;
         switch (lexeme.type) {
             case NAME:
                 lexemes.back();
                 return func(lexemes);
             case OP_MINUS:
-                int value = factor(lexemes);
+                value = factor(lexemes);
                 return -value;
             case NUMBER:
                 return Integer.parseInt(lexeme.value);

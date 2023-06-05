@@ -5,27 +5,26 @@ import java.util.Map;
 import java.util.Optional;
 
 public class Matrices {
-    private Map<Character, Matrix> matrices = new LinkedHashMap<Character, Matrix>();
+    private final Map<Character, Matrix> matrices = new LinkedHashMap<>();
 
     public Matrices(char[] names, String[] matrices) {
         if (!(names.length == matrices.length)){
             System.err.println("Matrices class constructor, init arrays length Not equal");
         }
         for (int i = 0; i < names.length; i++) {
-            this.matrices.put((Character)names[i], new Matrix(matrices[i]));
+            this.matrices.put(names[i], new Matrix(matrices[i]));
         }
     }
 
     public Map.Entry<Character, Matrix> next() {
-        Map.Entry<Character, Matrix> entry = this.matrices.entrySet().iterator().next();
-        return entry;
+        return this.matrices.entrySet().iterator().next();
     }
 
     public char[] getKeys(){
         char[] res = new char[]{};
-        int i = 0;
+        int i = 1;
         for (Character key : matrices.keySet()) {
-            res[i] = (char)key;
+            res[i] = key;
             i++;
         }
         return res;
@@ -33,7 +32,7 @@ public class Matrices {
 
     public String[] getItems(){
         String[] res = new String[]{};
-        int i = 0;
+        int i = 1;
         for (Map.Entry<Character, Matrix> entry : this.matrices.entrySet()) {
             res[i] = entry.getValue().toString();
             i++;
@@ -46,7 +45,7 @@ public class Matrices {
         for (Map.Entry<Character, Matrix> entry : this.matrices.entrySet()) {
             if (minRows >= entry.getValue().getRows()){
                 minRows = entry.getValue().getRows();
-            };
+            }
         }
         return minRows;
     }
@@ -56,17 +55,17 @@ public class Matrices {
         for (Map.Entry<Character, Matrix> entry : this.matrices.entrySet()) {
             if (minColumns >= entry.getValue().getColumns()){
                 minColumns = entry.getValue().getColumns();
-            };
+            }
         }
         return minColumns;
     }
 
     public boolean containsMatrix(char c) {
-        return getMatrix((Character)c).isPresent();
+        return getMatrix(c).isPresent();
     }
 
     public Optional<Matrix> getMatrix(char c) {
-        return Optional.ofNullable(matrices.get((Character)c));
+        return Optional.ofNullable(matrices.get(c));
     }
 
     public int size() {

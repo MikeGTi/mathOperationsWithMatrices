@@ -27,7 +27,7 @@ public class TestAssignment {
         System.out.println(resMatrix.toString());
     }
 
-    private static String GetStringFromFile(String _filepath){
+    private static String getStringFromFile(String _filepath){
         StringBuilder stringBuilder = new StringBuilder();
         int i;
         try (FileInputStream fileInputStream = new FileInputStream(_filepath)) {
