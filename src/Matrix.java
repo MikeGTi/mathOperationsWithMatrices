@@ -1,5 +1,3 @@
-package TestAssignment;
-
 import java.util.Arrays;
 import java.util.Objects;
 

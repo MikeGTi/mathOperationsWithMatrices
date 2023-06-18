@@ -1,4 +1,4 @@
-package TestAssignment;
+package Parser;
 
 public class ParserInputString {
     private String inputString;

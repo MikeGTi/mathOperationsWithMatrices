@@ -1,5 +1,3 @@
-package TestAssignment;
-
 import Parser.ParserOnLexemes;
 
 import java.util.List;
